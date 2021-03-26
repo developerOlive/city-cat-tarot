@@ -1,0 +1,30 @@
+server:
+  servlet:
+     encoding:
+       charset: UTF-8
+       force: true
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+
+spring:
+  datasource:
+    url: jdbc:h2:~/data/cat
+
+#"db-city-cat-tarot" Profile 쓸 때
+#spring:
+#  profiles: mariadb
+#  datasource:
+#    sql-script-encoding: UTF-8
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    url: jdbc:mariadb://mariadb:3306/tarotcard?useUnicode=true&characterEncoding=utf8&c&useSSL=false
+#    username: olive
+#    password:
+
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update

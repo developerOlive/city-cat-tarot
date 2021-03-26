@@ -23,6 +23,7 @@ repositories {
 
 dependencies {
     implementation 'junit:junit:4.12'
+    implementation 'org.projectlombok:lombok:1.18.16'
 
 // Use JUnit Jupiter API for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
@@ -76,6 +77,10 @@ dependencies {
 
     // mustache
     compile 'org.springframework.boot:spring-boot-starter-mustache'
+
+    // jsaypt
+    compile 'com.github.ulisesbocchio:jasypt-spring-boot-starter:2.1.1'
+    compile 'org.bouncycastle:bcprov-jdk15on:1.64'
 }
 
 application {
