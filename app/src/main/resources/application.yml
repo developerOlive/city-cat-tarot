@@ -8,23 +8,19 @@ jasypt:
   encryptor:
     bean: jasyptStringEncryptor
 
-#spring:
-#  datasource:
-#    url: jdbc:h2:~/data/cat
-#  jpa:
-#    hibernate:
-#      ddl-auto: create
-
+spring:
+  datasource:
+    url: jdbc:h2:~/data/cat
 
 #"db-city-cat-tarot" Profile 쓸 때
-spring:
-  profiles: mariadb
-  datasource:
-    sql-script-encoding: UTF-8
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://mariadb:3306/tarotcard?useUnicode=true&characterEncoding=utf8&c&useSSL=false
-    username: olive
-    password: ENC (8/BLbgfjVqFu8vCpC+gD1D45DUFsk8E4/MuYwgoW5xmBPlw29lQoVxWNHJrX4gDB)
+#spring:
+#  profiles: mariadb
+#  datasource:
+#    sql-script-encoding: UTF-8
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    url: jdbc:mariadb://mariadb:3306/tarotcard?useUnicode=true&characterEncoding=utf8&c&useSSL=false
+#    username: olive
+#    password:
 
   jpa:
     open-in-view: false
