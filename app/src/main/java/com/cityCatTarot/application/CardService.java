@@ -3,6 +3,7 @@ package com.cityCatTarot.application;
 import com.cityCatTarot.domain.Card;
 import com.cityCatTarot.domain.CardRepository;
 import com.cityCatTarot.errors.CardNotFoundException;
+import com.github.dozermapper.core.Mapper;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -16,9 +17,11 @@ import java.util.List;
 @Transactional
 public class CardService {
 
+    private final Mapper mapper;
     private final CardRepository cardRepository;
 
-    public CardService(CardRepository cardRepository) {
+    public CardService(Mapper mapper, CardRepository cardRepository) {
+        this.mapper = mapper;
         this.cardRepository = cardRepository;
     }
 
