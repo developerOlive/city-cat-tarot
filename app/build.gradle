@@ -85,7 +85,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.citycattarot.App'
+    mainClass = 'com.cityCatTarot.App'
 }
 
 tasks.named('test') {
