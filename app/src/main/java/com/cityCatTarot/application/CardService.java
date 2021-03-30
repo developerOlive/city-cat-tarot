@@ -44,4 +44,3 @@ public class CardService {
                 .orElseThrow(() -> new CardNotFoundException(cardId));
     }
 }
-
