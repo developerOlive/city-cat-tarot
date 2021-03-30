@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,29 +15,27 @@ import javax.persistence.Id;
 /**
  * 카드 정보.
  */
-
 @Builder
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name="Card")
 public class Card {
 
     @Id
-//    @Column(name = "cardId")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int cardId;
+    @Column(name = "card_id")
+    private Integer cardId;
 
-    @Column(name = "cardCategory")
+    @Column(name = "card_category")
     private String cardCategory;
 
-    @Column(name = "cardImageUrl")
+    @Column(name = "card_image_url")
     private String cardImageUrl;
 
-    @Column(name = "cardTitle")
+    @Column(name = "card_title")
     private String cardTitle;
 
-    @Column(name = "cardDetail")
+    @Column(name = "card_detail")
     private String cardDetail;
-
 }
