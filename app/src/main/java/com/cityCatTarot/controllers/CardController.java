@@ -25,7 +25,7 @@ public class CardController {
     /**
      * 모든 카드를 응답합니다.
      */
-    @GetMapping(produces = "application/json; charset=UTF8")
+    @GetMapping
     public List<Card> list() {
         return cardService.getCards();
     }
@@ -36,7 +36,7 @@ public class CardController {
      * @param
      * @return 전달된 식별자에 해당하는 카드
      */
-    @GetMapping(path = "/{cardCategory}/{cardId}", produces = "application/json; charset=UTF8")
+    @GetMapping(path = "/{cardCategory}/{cardId}")
     public Card detail(@PathVariable (name = "cardCategory") String cardCategory,
                        @PathVariable (name = "cardId") int cardId) {
 
