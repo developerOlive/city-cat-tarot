@@ -2,11 +2,15 @@ package com.cityCatTarot.controllers;
 
 import com.cityCatTarot.application.CardService;
 import com.cityCatTarot.domain.Card;
+import com.cityCatTarot.dto.TaroChatResponseData;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -25,7 +29,7 @@ public class CardController {
     /**
      * 모든 카드를 응답합니다.
      */
-    @GetMapping
+    @GetMapping(produces = "application/json; charset=UTF8")
     public List<Card> list() {
         return cardService.getCards();
     }
@@ -36,7 +40,7 @@ public class CardController {
      * @param
      * @return 전달된 식별자에 해당하는 카드
      */
-    @GetMapping(path = "/{cardCategory}/{cardId}")
+    @GetMapping(path = "/{cardCategory}/{cardId}", produces = "application/json; charset=UTF8")
     public Card detail(@PathVariable (name = "cardCategory") String cardCategory,
                        @PathVariable (name = "cardId") int cardId) {
 
