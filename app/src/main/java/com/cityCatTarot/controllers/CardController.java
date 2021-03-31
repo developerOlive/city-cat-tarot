@@ -3,6 +3,7 @@ package com.cityCatTarot.controllers;
 import com.cityCatTarot.application.CardService;
 import com.cityCatTarot.domain.Card;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/tarotChat")
+@CrossOrigin
 public class CardController {
 
     private final CardService cardService;
