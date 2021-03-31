@@ -7,6 +7,7 @@ daemon
 native
 notifications
 app/out/
+application.yml
 
 # Ignore Gradle build output directory
 build
