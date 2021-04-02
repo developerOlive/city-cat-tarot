@@ -83,5 +83,8 @@ public class UserService {
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
     }
-
+  
+    public List<User> getUsers() {
+        return userRepository.findAll();
+    }
 }
