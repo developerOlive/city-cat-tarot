@@ -11,8 +11,6 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 /**
  * 회원에 관한 비즈니스 로직을 담당합니다.
  */
@@ -85,9 +83,8 @@ public class UserService {
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
     }
-
+  
     public List<User> getUsers() {
         return userRepository.findAll();
     }
-
 }
