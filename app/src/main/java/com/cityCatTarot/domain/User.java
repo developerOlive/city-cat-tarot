@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 /**
  * 회원 정보.
  */
-@Entity
+@Entity(name="User")
 @Getter
 @Builder
 @NoArgsConstructor
@@ -22,18 +23,23 @@ import javax.validation.constraints.NotEmpty;
 public class User {
     @Id
     @GeneratedValue
+    @Column(name = "user_id")
     private Long id;
 
     @NotEmpty(message = "회원 이메일은 필수 입니다.")
+    @Column(name = "user_email")
     private String email;
 
     @NotEmpty(message = "회원 닉네임은 필수 입니다.")
+    @Column(name = "user_nick_name")
     private String nickName;
 
     @NotEmpty(message = "회원 비밀번호는 필수 입니다.")
+    @Column(name = "user_password")
     private String password;
 
     @Builder.Default
+    @Column(name = "deleted")
     private boolean deleted = false;
 
     /**
