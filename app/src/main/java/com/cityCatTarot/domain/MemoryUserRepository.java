@@ -3,6 +3,8 @@ package com.cityCatTarot.domain;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,11 +29,23 @@ public class MemoryUserRepository implements UserRepository {
     }
 
     @Override
-    public List<User> findByEmail(String email) {
-        return entityManager.createQuery("select u from User u where u.email = :email",
-                        User.class)
+    public Optional<User> findByEmailForRegister(String email) {
+
+        try {
+            Query q = entityManager.createQuery("select u from User u where u.email = :email", User.class);
+            q.setParameter("email", email);
+            return (Optional<User>) q.getSingleResult();
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<User> findByEmailForLogin(String email) {
+        return Optional.of(entityManager.createQuery("select u from User u where u.email = :email", User.class)
                 .setParameter("email", email)
-                .getResultList();
+                .getSingleResult());
+
     }
 
     @Override
@@ -42,9 +56,14 @@ public class MemoryUserRepository implements UserRepository {
 
     @Override
     public boolean existsByEmail(String email) {
-        if (!findByEmail(email).isEmpty()){
+        if (findByEmailForRegister(email).isPresent()){
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void delete(Long id) {
+
     }
 }
