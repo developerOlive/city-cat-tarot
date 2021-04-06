@@ -2,6 +2,7 @@ package com.cityCatTarot.controllers;
 
 import com.cityCatTarot.dto.ErrorResponse;
 import com.cityCatTarot.errors.CardNotFoundException;
+import com.cityCatTarot.errors.LoginFailException;
 import com.cityCatTarot.errors.UserEmailDuplicationException;
 import com.cityCatTarot.errors.UserNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -32,5 +33,16 @@ public class ControllerErrorAdvice {
     @ExceptionHandler(UserEmailDuplicationException.class)
     public ErrorResponse handleUserEmailIsAlreadyExisted() {
         return new ErrorResponse("User's email address is already existed");
+    }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(LoginFailException.class)
+    public ErrorResponse handleLoginFailException() {
+        return new ErrorResponse("Log-in failed...bad Request!!!!");
+    }
+
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ExceptionHandler(AccessDeniedException.class)
+    public ErrorResponse handleUserIdNotMatchException() {
+        return new ErrorResponse("Access denied");
     }
 }
