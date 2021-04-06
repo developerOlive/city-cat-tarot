@@ -26,15 +26,12 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
-    //    @NotEmpty(message = "회원 이메일은 필수 입니다.")
     @Column(name = "user_email")
     private String email;
-
-    //    @NotEmpty(message = "회원 닉네임은 필수 입니다.")
+  
     @Column(name = "user_nick_name")
     private String nickName;
-
-    //    @NotEmpty(message = "회원 비밀번호는 필수 입니다.")
+  
     @Column(name = "user_password")
     private String password;
 
