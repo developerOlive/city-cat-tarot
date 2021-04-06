@@ -1,6 +1,7 @@
 package com.cityCatTarot.controllers;
 
 import com.cityCatTarot.dto.ErrorResponse;
+import com.cityCatTarot.errors.AccessDeniedException;
 import com.cityCatTarot.errors.CardNotFoundException;
 import com.cityCatTarot.errors.LoginFailException;
 import com.cityCatTarot.errors.UserEmailDuplicationException;
