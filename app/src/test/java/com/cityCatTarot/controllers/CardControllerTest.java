@@ -1,5 +1,6 @@
 package com.cityCatTarot.controllers;
 
+import com.cityCatTarot.application.AuthenticationService;
 import com.cityCatTarot.application.CardService;
 import com.cityCatTarot.domain.Card;
 import com.cityCatTarot.errors.CardNotFoundException;
@@ -34,6 +35,9 @@ class CardControllerTest {
 
     @MockBean
     private CardService cardService;
+
+    @MockBean
+    private AuthenticationService authenticationService;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -137,5 +141,3 @@ class CardControllerTest {
                 .andExpect(status().isNotFound());
     }
 }
-
-
