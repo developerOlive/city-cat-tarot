@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.security.Key;
 
 /**
- * JWT Token 조작 유틸리티.
+ * JWT 토큰을 관리합니다.
  */
 @Component
 public class JwtUtil {
@@ -21,6 +21,12 @@ public class JwtUtil {
         key = Keys.hmacShaKeyFor(secret.getBytes());
     }
 
+    /**
+     * JWT 토큰을 생성합니다.
+     *
+     * @param userId 회원 식별자
+     * @return 생성된 토큰
+     */
     public String encode(Long userId) {
         String token = Jwts.builder()
                 .claim("user_id", userId)
@@ -30,6 +36,13 @@ public class JwtUtil {
         return token;
     }
 
+    /**
+     * JWT 토큰을 복호화합니다.
+     *
+     * @param token 토큰
+     * @return 복호화된 정보
+     * @throws InvalidTokenException 토큰이 유효하지 않을 경우
+     */
     public Claims decode(String token) {
         if (token == null || token.isBlank()) {
             throw new InvalidTokenException(token);
