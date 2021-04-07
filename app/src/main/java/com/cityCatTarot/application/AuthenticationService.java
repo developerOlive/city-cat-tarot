@@ -5,6 +5,7 @@ import com.cityCatTarot.domain.RoleRepository;
 import com.cityCatTarot.domain.User;
 import com.cityCatTarot.domain.UserRepository;
 import com.cityCatTarot.errors.EncoderFailException;
+import com.cityCatTarot.errors.LoginFailException;
 import com.cityCatTarot.errors.LoginFailWithNotFoundEmailException;
 import com.cityCatTarot.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
@@ -40,7 +41,7 @@ public class AuthenticationService {
      * @param password 회원 비밀번호
      * @return 인증 토큰
      */
-    public String login(String email, String password) {
+    public String login(String email, String password) throws LoginFailException {
 
         User user = userRepository.findByEmailForLogin(email)
                 .orElseThrow(() -> new LoginFailWithNotFoundEmailException(email));
