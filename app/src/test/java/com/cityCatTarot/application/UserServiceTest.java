@@ -1,5 +1,7 @@
 package com.cityCatTarot.application;
 
+import com.cityCatTarot.domain.Role;
+import com.cityCatTarot.domain.RoleRepository;
 import com.cityCatTarot.domain.User;
 import com.cityCatTarot.domain.UserRepository;
 import com.cityCatTarot.dto.UserModificationData;
@@ -12,6 +14,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
 
@@ -26,25 +30,28 @@ class UserServiceTest {
 
     private UserService userService;
 
-    private final UserRepository userRepository =
-            mock(UserRepository.class);
+    private final UserRepository userRepository = mock(UserRepository.class);
+    private final RoleRepository roleRepository = mock(RoleRepository.class);
 
-    private final String USER_EMAIL = "test@example.com";
+    private final String USER_EMAIL = "olive@email.coz";
     private final String USER_NICKNAME = "testNickName";
     private final String USER_PASSWORD = "testPassword";
     private final Long USER_ID = 1L;
 
-    private final String EXISTING_EMAIL_ADDRESS = "existed@example.com";
+    private final String EXISTING_EMAIL_ADDRESS = "existing@email.coz";
     private final String REVISED_NICKNAME = "revisedNickName";
     private final String REVISED_PASSWORD = "revisedPassword";
 
     private final Long NOT_EXISTING_ID = 999L;
+    private static final Long DELETED_USER_ID = 200L;
 
     @BeforeEach
     void setUp() {
         Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-        userService = new UserService(mapper, userRepository);
+        userService = new UserService(
+                mapper, userRepository, roleRepository, passwordEncoder);
 
         given(userRepository.save(any(User.class))).will(invocation -> {
             User source = invocation.getArgument(0);
@@ -84,6 +91,7 @@ class UserServiceTest {
         assertThat(user.getNickName()).isEqualTo(USER_NICKNAME);
 
         verify(userRepository).save(any(User.class));
+        verify(roleRepository).save(any(Role.class));
     }
 
     @Test
@@ -110,7 +118,7 @@ class UserServiceTest {
                 .password(REVISED_PASSWORD)
                 .build();
 
-        User user = userService.updateUser(USER_ID, modificationData);
+        User user = userService.updateUser(USER_ID, modificationData, USER_ID);
 
         assertThat(user.getId()).isEqualTo(USER_ID);
         assertThat(user.getEmail()).isEqualTo(EXISTING_EMAIL_ADDRESS);
@@ -129,11 +137,28 @@ class UserServiceTest {
                 .build();
 
         assertThatThrownBy(
-                () -> userService.updateUser(NOT_EXISTING_ID, modificationData)
+                () -> userService.updateUser(NOT_EXISTING_ID, modificationData, NOT_EXISTING_ID)
         )
                 .isInstanceOf(UserNotFoundException.class);
 
         verify(userRepository).findById(NOT_EXISTING_ID);
+    }
+
+    @DisplayName("회원정보 수정 시 수정할 회원 식별자와 인증된 회원 식별자가 다른 경우 예외를 던진다.")
+    @Test
+    void updateUserByOthersAccess() {
+        UserModificationData modificationData = UserModificationData.builder()
+                .nickName("TEST")
+                .password("TEST")
+                .build();
+
+        Long targetUserId = 1L;
+        Long currentUserId = 2L;
+
+        assertThatThrownBy(() -> {
+            userService.updateUser(
+                    targetUserId, modificationData, currentUserId);
+        }).isInstanceOf(AccessDeniedException.class);
     }
 
     @Test
