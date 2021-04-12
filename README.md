@@ -16,7 +16,13 @@ https://github.com/CodeSoom/project-spring-1-developerOlive.git
 
 ---
 
-## 🎈 구성
+## 🎈 핵심 기능
+
+- 오늘의 운세 타로를 볼 수 있습니다.
+
+- 썸 타로를 볼 수 있습니다.
+
+- 회원가입 시 타로카드 보관함 이용이 가능합니다.
 
 
 <p align="center">
@@ -43,4 +49,4 @@ https://github.com/CodeSoom/project-spring-1-developerOlive.git
 
 🔥 Backend 기술 스택 및 사용 라이브러리
 
-Java | Spring Boot + gradle | JPA(ORM) | AWS EC2, S3 | Docker | JWT | Spring security | MariaDB | Git | 
+Java | Spring Boot + gradle | JPA(ORM) | AWS EC2, S3 | Docker | JWT | Spring security | MariaDB | Junit5 |Git | 
