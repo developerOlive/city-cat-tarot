@@ -12,6 +12,8 @@
 
 재미로 보는 '오늘의 운세 타로'와 '썸 타로'! 보고 싶은 사람 드루와라냥!
 
+https://github.com/CodeSoom/project-spring-1-developerOlive.git
+
 ---
 
 ## 🎈 구성
