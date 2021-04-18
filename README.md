@@ -29,13 +29,13 @@
 - 회원가입 시 타로카드 보관함 이용이 가능합니다. 
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/67456294/114234161-5c366400-99b9-11eb-95f0-90b032488f4b.gif" alt="factorio thumbnail"/>
+  <img src="https://user-images.githubusercontent.com/67456294/115147486-26b70800-a096-11eb-93e5-d56acd36bce5.gif" alt="factorio thumbnail"/>
 </p> 
+
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/67456294/114234235-72442480-99b9-11eb-827e-5d812c601439.gif" alt="factorio thumbnail"/>
+  <img src="https://user-images.githubusercontent.com/67456294/115147198-cf646800-a094-11eb-9aed-2c1be7eaeb7d.gif" alt="factorio thumbnail"/>
 </p> 
-
 
 
 ---
@@ -49,6 +49,9 @@
 
 
 #### 👉🏻👉🏻 [3주차 회고록](https://domean.tistory.com/219) (JWT Token과 Spring Security를 활용한 회원가입, 로그인 기능을 만들어보자!)
+
+
+
 
 #### 👉🏻👉🏻 [4주차 회고록](https://domean.tistory.com/222) (타로카드 보관함 기능을 만들고, 도메인에 연결 시키자!)
 
