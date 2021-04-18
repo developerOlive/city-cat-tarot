@@ -50,8 +50,10 @@
 
 #### 👉🏻👉🏻 [3주차 회고록](https://domean.tistory.com/219) (JWT Token과 Spring Security를 활용한 회원가입, 로그인 기능을 만들어보자!)
 
+#### 👉🏻👉🏻 [4주차 회고록](https://domean.tistory.com/222) (타로카드 보관함 기능을 만들고, 도메인에 연결 시키자!)
+
 ---
 
-🔥 Backend 기술 스택 및 사용 라이브러리
+## 🔥 Backend 기술 스택 및 사용 라이브러리
 
-Java | Spring Boot + gradle | JPA(ORM) | AWS EC2, S3 | Docker | JWT | Spring security | MariaDB | Junit5 | Git 
+Java | Spring Boot + gradle | JPA | AWS EC2, S3 | Docker | JWT | Spring security | MariaDB | Junit5 | Git 
