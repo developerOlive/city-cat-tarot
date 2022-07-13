@@ -1,3 +1,6 @@
+코드 및 pr 확인 : https://github.com/CodeSoom/city-cat-tarot-developerOlive
+
+
 # City Cat Tarot (시티 캣 타로) 
 
 
